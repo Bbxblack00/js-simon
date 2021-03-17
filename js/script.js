@@ -24,7 +24,8 @@ function randomArr() {
 
 function alarm() {
   alert(memoNum);
-  timer = setInterval(startPoint, 1000);
+  // var contatore
+  timer = setTimeout(input, 5000);
 }
 
 
@@ -36,14 +37,13 @@ function alarm() {
 
 
 function startPoint() {
-  var result;
   document.getElementById('title').innerHTML = seconds--;
   if (seconds < 0) {
     clearInterval(timer);
     document.getElementById('title').innerHTML = 'VIA!!!';
-    result = input();
+  } else {
+
   }
-  return result;
 }
 
 
@@ -61,6 +61,7 @@ function input() {
     userNumber = parseInt(prompt('inserisci un numero'));
     userNumbers.push(userNumber);
   }
+  result(userNumbers, memoNum);
   return userNumbers;
 }
 
@@ -73,12 +74,13 @@ function input() {
 
 
 function comparison(arr1, arr2) {
-  var arr2Num;
+  // console.log(arr1);
+  var arr1Num;
   var test;
   for (var i = 0; i < 5; i++) {
-    arr2Num = arr2[i];
+    arr1Num = arr1[i];
     for (var i = 0; i < 5; i++) {
-      test = arr1.includes(arr2Num);
+      test = arr2.includes(arr1Num);
       if (!test) {
         return false;
       }
@@ -96,7 +98,7 @@ function comparison(arr1, arr2) {
 
 
 function result(arr1, arr2) {
-  var comp = comparison(userNum, memoNum);
+  var comp = comparison(arr1, arr2);
   if (comp) {
     document.getElementById('title').innerHTML = 'risultato: <br> Hai vinto!!!';
   } else {
@@ -113,15 +115,9 @@ function result(arr1, arr2) {
 
 
 // zona variabili
-var seconds = 30;
+var seconds = 5;
 var memoNum = randomArr();
-
 
 
 // chiamata delle funzioni
 alarm();
-
-var userNum = startPoint();
-
-
-result(userNum, memoNum);
