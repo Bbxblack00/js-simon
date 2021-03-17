@@ -53,14 +53,24 @@ function comparison(arr1, arr2) {
   return true;
 }
 
+function result(bool) {
+  if (bool) {
+    document.getElementById('title').innerHTML = 'risultato: <br> Hai vinto!!!';
+  } else {
+    document.getElementById('title').innerHTML = 'risultato: <br> Sbagliato!!!';
+  }
+}
+
 
 // zona variabili
 var seconds = 0;
 var memoNum = randomArr();
-var comp = comparison(userNumbers, memoNum);
+
 
 
 // ciamata delle funzioni
 alarm();
 
-result;
+var comp = comparison(userNumbers, memoNum);
+
+result(comp);
