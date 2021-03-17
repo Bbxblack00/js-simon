@@ -11,32 +11,66 @@ function randomArr() {
     t = Math.floor(Math.random() * 100) + 1;
     arr.push(t);
   }
+  console.log(arr);
   return arr;
 }
+
+
+
+
+
+
+
 
 function alarm() {
   alert(memoNum);
   timer = setInterval(startPoint, 1000);
 }
 
+
+
+
+
+
+
+
+
 function startPoint() {
+  var result;
   document.getElementById('title').innerHTML = seconds--;
   if (seconds < 0) {
     clearInterval(timer);
     document.getElementById('title').innerHTML = 'VIA!!!';
-    input();
+    result = input();
   }
+  return result;
 }
+
+
+
+
+
+
+
+
 
 function input() {
   var userNumber;
   var userNumbers = [];
   for (var i = 0; i < 5; i++) {
-    userNumber = paerseInt(prompt('inserisci un numero'));
+    userNumber = parseInt(prompt('inserisci un numero'));
     userNumbers.push(userNumber);
   }
   return userNumbers;
 }
+
+
+
+
+
+
+
+
 
 function comparison(arr1, arr2) {
   var arr2Num;
@@ -53,8 +87,17 @@ function comparison(arr1, arr2) {
   return true;
 }
 
-function result(bool) {
-  if (bool) {
+
+
+
+
+
+
+
+
+function result(arr1, arr2) {
+  var comp = comparison(userNum, memoNum);
+  if (comp) {
     document.getElementById('title').innerHTML = 'risultato: <br> Hai vinto!!!';
   } else {
     document.getElementById('title').innerHTML = 'risultato: <br> Sbagliato!!!';
@@ -62,15 +105,23 @@ function result(bool) {
 }
 
 
+
+
+
+
+
+
+
 // zona variabili
-var seconds = 0;
+var seconds = 30;
 var memoNum = randomArr();
 
 
 
-// ciamata delle funzioni
+// chiamata delle funzioni
 alarm();
 
-var comp = comparison(userNumbers, memoNum);
+var userNum = startPoint();
 
-result(comp);
+
+result(userNum, memoNum);
